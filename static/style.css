@@ -1,0 +1,138 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: url('study-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    }
+    
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Login-style wrapper */
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 20px;
+}
+
+/* Main box styled like social media login */
+.login-box {
+    background-color: rgba(255, 255, 255, 0.85); /* translucent white */
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+
+.login-box h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Task input form */
+.task-box h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+/* Task list */
+.task-list {
+    text-align: left;
+}
+
+.task-list h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f0f4f8;
+    border: 1px solid #d6e0eb;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li form {
+    margin: 0;
+}
+
+li button {
+    background-color: #e74c3c;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+li button:hover {
+    background-color: #c0392b;
+}

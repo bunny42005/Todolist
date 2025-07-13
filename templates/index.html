@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusMind</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-box">
+            <h1>CampusMind</h1>
+            <p class="tagline">Your smart assistant for college tasks and reminders</p>
+
+            <div class="task-box">
+                <h2>Add Task</h2>
+                <form method="POST">
+                    <input type="text" name="task" placeholder="Enter task..." required>
+                    <input type="date" name="deadline" required>
+                    <button type="submit">Add Task</button>
+                </form>
+            </div>
+
+            <div class="task-list">
+                <h2>Task List</h2>
+                <ul>
+                    {% for task in tasks %}
+                        <li>
+                            <span>{{ task.name }} – Due: {{ task.deadline }}</span>
+                            <form method="POST" action="/delete/{{ task.id }}">
+                                <button type="submit">Done</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if ("Notification" in window) {
+                Notification.requestPermission();
+            }
+        });
+
+        function showNotification(taskName, deadline) {
+            if (Notification.permission === "granted") {
+                const notification = new Notification("📌 Task Reminder", {
+                    body: `${taskName} is due on ${deadline}`,
+                    icon: "/static/notify-icon.png" // optional
+                });
+            }
+        }
+
+        // Pass `today` from Flask to JavaScript
+        const today = "{{ today }}";
+        const tasks = {{ tasks | tojson }};
+        
+        tasks.forEach(task => {
+            if (task.deadline === today) {
+                showNotification(task.name, task.deadline);
+            }
+        });
+    </script>
+</body>
+</html>
